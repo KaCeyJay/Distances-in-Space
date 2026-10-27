@@ -44,6 +44,11 @@ Each refresh (F5) shows another space fact
 Alias and email configured
 .gitignore created
 
-7. Liftoff
+8. Liftoff
 --------------------------
 First working prototype without Lighthouse check
+
+9. Lighthouse check
+--------------------------
+Contrast of Calculate button led to 96 points.
+Fix: Darker background blue of Calculate button -> 100 points
