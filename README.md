@@ -56,3 +56,7 @@ Fix: Darker background blue of Calculate button -> 100 points
 10. "About" functionality
 --------------------------
 Added functionality to switch between "About" link in header and also added "Home" link
+
+11. "AI Disclosure"
+--------------------------
+Added functionality to switch between "Home" text and "AI Disclosure" text 

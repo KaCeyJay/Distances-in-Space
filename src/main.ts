@@ -84,14 +84,38 @@ function initializeHome(): void
     const homeLink = document.getElementById("home-link");
     const slogan = document.getElementById("hero-slogan");
     const about = document.getElementById("hero-about");
+    const disclosure = document.getElementById("hero-ai-disclosure");
 
-    if (!homeLink || !slogan || !about)
+    if (!homeLink || !slogan || !about || !disclosure)
          return;
 
     homeLink.addEventListener("click", (): void =>
     {
         slogan.hidden = false;
         about.hidden = true;
+        disclosure.hidden = true;
+    });
+}
+
+/* ------------------------------------------------ */
+/*                   Init AI Disclosure             */
+/* ------------------------------------------------ */
+function initializeAIDisclosure(): void
+{
+    // Get references to the "AI Disclosure" link, slogan, about section, and disclosure section
+    const link = document.getElementById("ai-disclosure-link");
+    const slogan = document.getElementById("hero-slogan");
+    const about = document.getElementById("hero-about");
+    const disclosure = document.getElementById("hero-ai-disclosure");
+
+    if (!link || !slogan || !about || !disclosure)
+         return;
+
+    link.addEventListener("click", (): void =>
+    {
+        slogan.hidden = true;
+        about.hidden = true;
+        disclosure.hidden = false;
     });
 }
 
@@ -104,14 +128,16 @@ function initializeAbout(): void
     const aboutLink = document.getElementById("about-link");
     const slogan = document.getElementById("hero-slogan");
     const about = document.getElementById("hero-about");
+    const disclosure = document.getElementById("hero-ai-disclosure");
 
-    if (!aboutLink || !slogan || !about)
+    if (!aboutLink || !slogan || !about || !disclosure)
          return;
 
     aboutLink.addEventListener("click", (): void =>
     {
         slogan.hidden = true;
         about.hidden = false;
+        disclosure.hidden = true;
     });
 }
 
@@ -187,3 +213,5 @@ initializeCalculator().catch(console.error);
 initializeAbout();
 // Call the initializeHome function
 initializeHome();
+// Call the initializeAIDisclosure function
+initializeAIDisclosure();
