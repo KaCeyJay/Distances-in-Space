@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Distances in Space</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <a href="#home" class="logo">
+          <img src="img/saturn_logo.png" alt="Saturn Logo" class="logo-image">
+          Distances in Space
+        </a>
+
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Distances in <span>Space</span></h1>
+
+                <p>
+                    Pick the destination, choose your most absurd measuring unit,
+                    and discover just how ridiculously far apart things are.
+                </p>
+            </div>
+
+            <img src="img/earth_bg.png" alt="Planet Earth" class="hero-earth">
+        </section>
+
+        <section id="calculator" class="calculator">
+            <div class="calculator-layout">
+                <div class="calculator-controls">
+                    <h2>Calculator (Origin is Earth)</h2>
+                    <form id="distance-form">
+                        <label for="destination">Destination</label>
+                        <select id="destination" name="destination" required>
+                            <option value="">Choose a destination</option>
+                        </select>         
+
+                        <label for="unit">Measure in</label>
+                        <select id="unit" name="unit" required>
+                            <option value="">Choose a measuring unit</option>
+                        </select>
+                        <button type="submit">Calculate Distance</button>
+                    </form>
+                </div>
+                <aside class="space-fact">
+                    <h3>✦ Did you know?</h3>
+                        <p id="space-fact-text">
+                            Loading a cosmic fact...
+                        </p>
+                </aside>
+            </div>
+            <output id="result" aria-live="polite"></output>
+
+        </section>
+
+    </main>
+
+<footer class="site-footer">
+    <p>You've reached the end of the observable website.</p>
+
+    <nav aria-label="Footer navigation">
+        <ul>
+            <li><a href="#ai-disclosure">AI Disclosure</a></li>
+        </ul>
+    </nav>
+</footer>
+
+<script type="module" src="/src/main.ts"></script>
+
+</body>
+</html>

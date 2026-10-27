@@ -1,0 +1,28 @@
+
+[
+  {
+    "id": "moon",
+    "name": "Moon",
+    "distanceFromEarthKm": 384400
+  },
+  {
+    "id": "venus",
+    "name": "Venus",
+    "distanceFromEarthKm": 41000000
+  },
+  {
+    "id": "mars",
+    "name": "Mars",
+    "distanceFromEarthKm": 78000000
+  },
+  {
+    "id": "jupiter",
+    "name": "Jupiter",
+    "distanceFromEarthKm": 628000000
+  },
+  {
+    "id": "saturn",
+    "name": "Saturn",
+    "distanceFromEarthKm": 1275000000
+  }
+]

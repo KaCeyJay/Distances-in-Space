@@ -1,0 +1,33 @@
+
+[
+  {
+    "id": "hollow-brick",
+    "name": "Hollow bricks",
+    "lengthMeters": 0.375
+  },
+  {
+    "id": "schnitzel",
+    "name": "Schnitzels",
+    "lengthMeters": 0.20
+  },
+  {
+    "id": "bathtub",
+    "name": "Bathtubs",
+    "lengthMeters": 1.80
+  },
+  {
+    "id": "earthworm",
+    "name": "Earthworms",
+    "lengthMeters": 0.15
+  },
+  {
+    "id": "eiffel-tower",
+    "name": "Eiffel Towers",
+    "lengthMeters": 330
+  },
+  {
+    "id": "betelgeuse",
+    "name": "Betelgeuse diameters",
+    "lengthMeters": 1060000000000
+  }
+]
