@@ -76,6 +76,46 @@ async function loadData<T>(path: string): Promise<T>
 }
 
 /* ------------------------------------------------ */
+/*                   Init Home                      */                     
+/* ------------------------------------------------ */
+function initializeHome(): void
+{
+    // Get references to the "Home" link, slogan, and about section
+    const homeLink = document.getElementById("home-link");
+    const slogan = document.getElementById("hero-slogan");
+    const about = document.getElementById("hero-about");
+
+    if (!homeLink || !slogan || !about)
+         return;
+
+    homeLink.addEventListener("click", (): void =>
+    {
+        slogan.hidden = false;
+        about.hidden = true;
+    });
+}
+
+/* ------------------------------------------------ */
+/*                   Init About                     */
+/* ------------------------------------------------ */
+function initializeAbout(): void
+{
+    // Get references to the "About" link, slogan, and about section
+    const aboutLink = document.getElementById("about-link");
+    const slogan = document.getElementById("hero-slogan");
+    const about = document.getElementById("hero-about");
+
+    if (!aboutLink || !slogan || !about)
+         return;
+
+    aboutLink.addEventListener("click", (): void =>
+    {
+        slogan.hidden = true;
+        about.hidden = false;
+    });
+}
+
+/* ------------------------------------------------ */
 /*                Init Calculator                   */
 /* ------------------------------------------------ */
 async function initializeCalculator(): Promise<void>
@@ -143,3 +183,7 @@ async function initializeCalculator(): Promise<void>
 
 // Call the initializeCalculator function and handle any errors
 initializeCalculator().catch(console.error);
+// Call the initializeAbout function
+initializeAbout();
+// Call the initializeHome function
+initializeHome();

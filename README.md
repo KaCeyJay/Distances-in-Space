@@ -52,3 +52,7 @@ First working prototype without Lighthouse check
 --------------------------
 Contrast of Calculate button led to 96 points.
 Fix: Darker background blue of Calculate button -> 100 points
+
+10. "About" functionality
+--------------------------
+Added functionality to switch between "About" link in header and also added "Home" link
