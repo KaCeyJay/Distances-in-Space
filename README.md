@@ -77,3 +77,7 @@ Replaced the ridiculous large images with smaller ones (Project size: 5.213kb --
 15. Reflexion.pdf
 --------------------------
 Added the reflexion.pdf (293 words)
+
+16. Production fail fixed
+--------------------------
+Wrong structure led to zero functionality in production build
