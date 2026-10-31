@@ -6,14 +6,16 @@
 interface CelestialObject
 {
     id: string;
-    name: string;
+    en: string;
+    de: string;
     distanceFromEarthKm: number;
 }
 
 interface MeasuringUnit
 {
     id: string;
-    name: string;
+    en: string;
+    de: string;
     lengthMeters: number;
 }
 
@@ -21,7 +23,8 @@ interface MeasuringUnit
 interface SpaceFact
 {
     id: number;
-    text: string;
+    en: string;
+    de: string;
 }
 
 /* ------------------------------------------------ */
@@ -29,24 +32,31 @@ interface SpaceFact
 /* ------------------------------------------------ */
 /* Part 2.2: >= 2 functions with params and return  */
 /* ------------------------------------------------ */
-function populateDropdown(dropdownId: string, items: { id: string; name: string }[]): void
+function populateDropdown(dropdownId: string, items: { id: string; en: string; de: string }[], language: "de" | "en"): void
 {
     const dropDown = document.getElementById(dropdownId);
 
     if (!(dropDown instanceof HTMLSelectElement))
-    {
         return;
-    }
+
+    const prevValue = dropDown.value;
+
+     // Clear existing options
+    dropDown.replaceChildren();
 
     items.forEach((item) =>
     {
         const option = document.createElement("option");
 
         option.value = item.id;
-        option.textContent = item.name;
+        option.textContent = item[language];
 
         dropDown.appendChild(option);
     });
+
+    // Restore previous selection if it exists
+    if (prevValue)
+        dropDown.value = prevValue;
 }
 
 /* ------------------------------------------------ */
@@ -73,6 +83,41 @@ async function loadData<T>(path: string): Promise<T>
         throw new Error(`Could not load ${path}`);
 
     return response.json() as Promise<T>;
+}
+
+/* ------------------------------------------------ */
+/*                Set Language                       */
+/* ------------------------------------------------ */
+/* Part 2.2: >= 2 functions with params and return  */
+/* ------------------------------------------------ */
+async function setLanguage(language: "de" | "en"): Promise<void>
+{
+    const translations = await loadData<Record<string, string>>(`/locales/${language}.json`);
+    const factElement = document.getElementById("space-fact-text");
+    const form = document.getElementById("distance-form");
+    const result = document.getElementById("result");
+
+    currentTranslations = translations;
+
+    document.querySelectorAll<HTMLElement>("[data-i18n]").forEach((element) =>
+    {
+        const key = element.dataset.i18n;
+        if (key && translations[key])
+            element.textContent = translations[key];
+    });
+
+    if (factElement && selectedFact)
+        factElement.textContent = selectedFact[language];
+    if (celestialObjects.length > 0)
+        populateDropdown("destination", celestialObjects, language);
+    if (measuringUnits.length > 0)
+        populateDropdown("unit", measuringUnits, language);
+
+    // Submit form again if language is changed and result is already displayed
+    if(form instanceof HTMLFormElement && result instanceof HTMLOutputElement && result.textContent?.trim())
+        form.requestSubmit();
+
+    document.documentElement.lang = language;
 }
 
 /* ------------------------------------------------ */
@@ -147,13 +192,13 @@ function initializeAbout(): void
 async function initializeCalculator(): Promise<void>
 {
     // Load data from JSON files
-    const objects = await loadData<CelestialObject[]>("/data/data_distance.json");
-    const units = await loadData<MeasuringUnit[]>("/data/data_units.json");
+    celestialObjects = await loadData<CelestialObject[]>("/data/data_distance.json");
+    measuringUnits = await loadData<MeasuringUnit[]>("/data/data_units.json");
     const facts = await loadData<SpaceFact[]>("/data/data_facts.json");   
 
     // Populate Dropdowns with objects and units
-    populateDropdown("destination", objects);
-    populateDropdown("unit", units);
+    populateDropdown("destination", celestialObjects, currentLanguage);
+    populateDropdown("unit", measuringUnits, currentLanguage);
 
     // Get references to form elements
     const form = document.getElementById("distance-form");
@@ -166,7 +211,8 @@ async function initializeCalculator(): Promise<void>
     if (factElement && facts.length > 0)
     {
         const randomIndex = Math.floor(Math.random() * facts.length);
-        factElement.textContent = facts[randomIndex].text;
+        selectedFact = facts[randomIndex];
+        factElement.textContent = selectedFact[currentLanguage];
     }
 
     if (!(form instanceof HTMLFormElement) || !(destinationDropdown instanceof HTMLSelectElement) || !(unitSelect instanceof HTMLSelectElement) || !(result instanceof HTMLOutputElement))
@@ -178,8 +224,8 @@ async function initializeCalculator(): Promise<void>
         event.preventDefault();
 
         // Get selected destination and unit
-        const destination = objects.find((object) => object.id === destinationDropdown.value);
-        const unit = units.find((item) => item.id === unitSelect.value);
+        const destination = celestialObjects.find((object) => object.id === destinationDropdown.value);
+        const unit = measuringUnits.find((item) => item.id === unitSelect.value);
 
         if (!destination || !unit || unit.lengthMeters <= 0)
         {
@@ -193,20 +239,38 @@ async function initializeCalculator(): Promise<void>
 
         // Display the result in a beautiful way
         const prefix = document.createElement("span");
-        prefix.textContent = `From Earth to ${destination.name}: `;
+        prefix.textContent = `${currentTranslations["resultPrefix"]}${destination[currentLanguage]}: `;
         const value = document.createElement("span");
         value.className = "result-value";
-        value.textContent = `${formattedAmount} ${unit.name}`;
+        value.textContent = `${formattedAmount} ${unit[currentLanguage]}`;
         const suffix = document.createElement("span");
-        suffix.textContent = "!";
+        suffix.textContent = `${currentTranslations["resultSuffix"]}`;
 
         // Clear previous result and append new result
         result.replaceChildren(prefix, value, suffix);
-
     });
-
 }
 
+/* ------------------------------------------------ */
+/*                  MAIN EXECUTION                  */
+/* ------------------------------------------------ */
+
+// Global variables to hold celestial objects and measuring units
+let celestialObjects: CelestialObject[] = [];
+// Global variable to hold measuring units
+let measuringUnits: MeasuringUnit[] = [];
+// SpaceFact variable to hold the selected fact
+let selectedFact: SpaceFact | null = null;
+// Initialize the language toggle functionality
+let currentLanguage: "de" | "en" = "en";
+const languageToggle = document.getElementById("language-toggle");
+languageToggle?.addEventListener("click", async (): Promise<void> =>
+{
+    currentLanguage = currentLanguage === "de" ? "en" : "de";
+    await setLanguage(currentLanguage);
+    languageToggle.textContent = currentLanguage === "de" ? "EN" : "DE";
+});
+let currentTranslations: Record<string, string> = {};
 // Call the initializeCalculator function and handle any errors
 initializeCalculator().catch(console.error);
 // Call the initializeAbout function
@@ -215,3 +279,5 @@ initializeAbout();
 initializeHome();
 // Call the initializeAIDisclosure function
 initializeAIDisclosure();
+// Set the default language to English and handle any errors
+setLanguage("en").catch(console.error);

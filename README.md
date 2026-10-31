@@ -59,4 +59,8 @@ Added functionality to switch between "About" link in header and also added "Hom
 
 11. "AI Disclosure"
 --------------------------
-Added functionality to switch between "Home" text and "AI Disclosure" text 
+Added functionality to switch between "Home" text and "AI Disclosure" text
+
+12. Localisation added
+--------------------------
+Added functionality and translation files fot english/german

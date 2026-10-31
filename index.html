@@ -19,8 +19,9 @@
 
         <nav aria-label="Main navigation">
             <ul>
-                <li><a href="#home" id="home-link">Home</a></li>
-                <li><a href="#about" id="about-link">About</a></li>
+                <li><a href="#home" id="home-link" data-i18n="navHome">Home</a></li>
+                <li><a href="#about" id="about-link" data-i18n="navAbout">About</a></li>
+                <li><button type="button" id="language-toggle" aria-label="Switch language" data-i18n="navLanguage">DE</button></li>
             </ul>
         </nav>
     </header>
@@ -29,40 +30,38 @@
         <section id="home" class="hero">
             <div class="hero-content">
                 <div id="hero-slogan">
-                    <h1>Distances in <span>Space</span></h1>
-
-                    <p>
+                    <h1 data-i18n="heroTitle">Distances in <span>Space</span></h1>
+                    <p data-i18n="heroSlogan">
                         Pick the destination, choose your most absurd measuring unit,
                         and discover just how ridiculously far apart things are.
                     </p>
                 </div>
                 <div id="hero-about" hidden>
-                    <h1>About</h1>
-
+                    <h1 data-i18n="navAbout">About</h1>
                     <p>
-                        <strong>Project:</strong> Distances in Space
+                        <strong data-i18n="aboutProjectLabel">Project:</strong>
+                        <span data-i18n="aboutProjectName">Distances in Space</span>
                     </p>
                     <p>
-                        <strong>Created by:</strong> KaCeyJay
+                        <strong data-i18n="aboutCreatorLabel">Created by:</strong> KaCeyJay
                     </p>
-                    <p>
+                    <p data-i18n="aboutDescription">
                         This website was created as a non-commercial university
                         project for educational purposes.
                     </p>
-                    <p>
+                    <p data-i18n="aboutDisclaimer">
                         Distances and measurement units are approximate and
                         intended for illustrative purposes only.
                     </p>
                 </div>
 
                 <div id="hero-ai-disclosure" hidden>
-                    <h1>AI Disclosure</h1>
-
-                    <p>
+                    <h1 data-i18n="langDisclosure">AI Disclosure</h1>
+                    <p data-i18n="aiDisclosureText">
                         The images used on this website were generated
                         with OpenAI's ChatGPT (GPT-6) in October 2026.
                     </p>
-                    <p>
+                    <p data-i18n="aiDisclosureText2">
                         The CSS stylesheet was developed with assistance
                         from OpenAI's ChatGPT (GPT-6) in October 2026.
                     </p>
@@ -75,22 +74,22 @@
         <section id="calculator" class="calculator">
             <div class="calculator-layout">
                 <div class="calculator-controls">
-                    <h2>Calculator (Origin is Earth)</h2>
+                    <h2 data-i18n="calculatorTitle">Calculator (Origin is Earth)</h2>
                     <form id="distance-form">
-                        <label for="destination">Destination</label>
+                        <label for="destination" data-i18n="destinationLabel">Destination</label>
                         <select id="destination" name="destination" required>
-                            <option value="">Choose a destination</option>
+                            <option value="" data-i18n="destinationPlaceholder">Choose a destination</option>
                         </select>         
 
-                        <label for="unit">Measure in</label>
+                        <label for="unit" data-i18n="unitLabel">Measure in</label>
                         <select id="unit" name="unit" required>
-                            <option value="">Choose a measuring unit</option>
+                            <option value="" data-i18n="unitPlaceholder">Choose a measuring unit</option>
                         </select>
-                        <button type="submit">Calculate Distance</button>
+                        <button type="submit" data-i18n="calculateButton">Calculate Distance</button>
                     </form>
                 </div>
                 <aside class="space-fact">
-                    <h3>✦ Did you know?</h3>
+                    <h3 data-i18n="spaceFactTitle">✦ Did you know?</h3>
                         <p id="space-fact-text">
                             Loading a cosmic fact...
                         </p>
@@ -103,11 +102,11 @@
     </main>
 
 <footer class="site-footer">
-    <p>You've reached the end of the observable website.</p>
+    <p data-i18n="footerText">You've reached the end of the observable website.</p>
 
     <nav aria-label="Footer navigation">
         <ul>
-            <li><a href="#ai-disclosure" id="ai-disclosure-link">AI Disclosure</a></li>
+            <li><a href="#ai-disclosure" id="ai-disclosure-link" data-i18n="langDisclosure">AI Disclosure</a></li>
         </ul>
     </nav>
 </footer>

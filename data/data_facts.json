@@ -1,26 +1,32 @@
 [
   {
     "id": 1,
-    "text": "Light takes about 1.3 seconds to travel from the Moon to Earth."
+    "en": "Light takes about 1.3 seconds to travel from the Moon to Earth.",
+    "de": "Licht braucht etwa 1.3 Sekunden, um vom Mond zur Erde zu reisen."
   },
   {
     "id": 2,
-    "text": "Sunlight takes about 8 minutes and 20 seconds to reach Earth."
+    "en": "Sunlight takes about 8 minutes and 20 seconds to reach Earth.",
+    "de": "Sonnenlicht benötigt etwa 8 Minuten und 20 Sekunden, um die Erde zu erreichen."
   },
   {
     "id": 3,
-    "text": "A day on Venus is longer than its year."
+    "en": "A day on Venus is longer than its year.",
+    "de": "Ein Tag auf der Venus ist länger als ihr Jahr."
   },
   {
     "id": 4,
-    "text": "Neptune takes about 165 Earth years to orbit the Sun."
+    "en": "Neptune takes about 165 Earth years to orbit the Sun.",
+    "de": "Neptun braucht etwa 165 Erdjahre, um die Sonne zu umkreisen."
   },
   {
     "id": 5,
-    "text": "The Moon is slowly moving away from Earth by about 3.8 centimeters per year."
+    "en": "The Moon is slowly moving away from Earth by about 3.8 centimeters per year.",
+    "de": "Der Mond entfernt sich von der Erde um etwa 3.8 Zentimeter pro Jahr."
   },
   {
     "id": 6,
-    "text": "One million Earths could fit inside the Sun by volume, approximately."
+    "en": "One million Earths could fit inside the Sun by volume, approximately.",
+    "de": "Ungefähr eine Million Erden könnten vom Volumen her in die Sonne passen."
   }
 ]

@@ -2,27 +2,32 @@
 [
   {
     "id": "moon",
-    "name": "Moon",
+    "en": "Moon",
+    "de": "Mond",
     "distanceFromEarthKm": 384400
   },
   {
     "id": "venus",
-    "name": "Venus",
+    "en": "Venus",
+    "de": "Venus",
     "distanceFromEarthKm": 41000000
   },
   {
     "id": "mars",
-    "name": "Mars",
+    "en": "Mars",
+    "de": "Mars",
     "distanceFromEarthKm": 78000000
   },
   {
     "id": "jupiter",
-    "name": "Jupiter",
+    "en": "Jupiter",
+    "de": "Jupiter",
     "distanceFromEarthKm": 628000000
   },
   {
     "id": "saturn",
-    "name": "Saturn",
+    "en": "Saturn",
+    "de": "Saturn",
     "distanceFromEarthKm": 1275000000
   }
 ]
