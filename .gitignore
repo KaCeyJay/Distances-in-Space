@@ -1,6 +1,23 @@
+# Dependencies
 node_modules/
+
+# Build Output
 dist/
+
+# Environment Variables
 .env
 .env.*
 !.env.example
+
+# Logs
+*.log
+
+# OS generated files
 .DS_Store
+
+# Windows
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
