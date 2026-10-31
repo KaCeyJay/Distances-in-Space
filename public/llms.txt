@@ -1,0 +1,8 @@
+# Distances in Space
+
+A playful distance calculator that converts approximate distances from Earth to celestial bodies into weird measuring units.
+
+## Links
+
+- [Project repository](https://github.com/KaCeyJay/Distances-in-Space)
+- [README](https://github.com/KaCeyJay/Distances-in-Space/blob/main/README.md)

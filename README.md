@@ -59,7 +59,7 @@ First working prototype without Lighthouse check
 9. Lighthouse check
 --------------------------
 Contrast of Calculate button led to 96 points.
-Fix: Darker background blue of Calculate button -> 100 points
+Fix: Darker background blue of Calculate button -> 100 points (Accessibility)
 
 10. "About" functionality
 --------------------------
@@ -89,3 +89,7 @@ Added the reflexion.pdf (293 words)
 16. Production fail fixed
 --------------------------
 Wrong structure led to zero functionality in production build
+
+17. Optimization II
+--------------------------
+For 100 in all subsections of Lighthouse
