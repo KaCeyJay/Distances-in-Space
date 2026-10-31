@@ -68,4 +68,8 @@ Added functionality and translation files fot english/german
 13. Who you gonne call? BUG HUNTERS!
 --------------------------
 Choose a target, measurement unit and switch language: The calculation is executed without pressing "Calculate".
-Added localised separators in the result 
+Added localised separators in the result
+
+14. Optimization
+--------------------------
+Replaced the ridiculous large images with smaller ones (Project size: 5.213kb --> 374kb)
