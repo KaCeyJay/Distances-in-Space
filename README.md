@@ -4,11 +4,11 @@ An interactive website that explores astronomical distances using unusual measur
 
 **Installation Guide**
 
-git clone https://github.com/KaCeyJay/Distances-in-Space.git
-cd Distances-in-Space
-npm ci
-npm run build
-npm run preview
+1. `git clone https://github.com/KaCeyJay/Distances-in-Space.git`
+2. `cd Distances-in-Space`
+3. `npm ci`
+4. `npm run build`
+5. `npm run preview`
 
 **Development Log**
 
