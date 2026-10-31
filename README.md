@@ -32,7 +32,7 @@ Decided to switch the central content dynamically while keeping the header and f
 Designed the initial HTML structure for the Cosmic Distance Calculator.
 Decided to separate astronomical data and measuring units from the user interface.
 Planned JSON files for storing celestial objects and measurement units.
-TypeScript will later load the data, populate the selection fields, and perform calculations.
+TypeScript will load the data, populate the fields and perform calculations.
 
 6. "Did you know"? aside box
 --------------------------
@@ -64,3 +64,8 @@ Added functionality to switch between "Home" text and "AI Disclosure" text
 12. Localisation added
 --------------------------
 Added functionality and translation files fot english/german
+
+13. Who you gonne call? BUG HUNTERS!
+--------------------------
+Choose a target, measurement unit and switch language: The calculation is executed without pressing "Calculate".
+Added localised separators in the result 

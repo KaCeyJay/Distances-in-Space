@@ -113,11 +113,36 @@ async function setLanguage(language: "de" | "en"): Promise<void>
     if (measuringUnits.length > 0)
         populateDropdown("unit", measuringUnits, language);
 
-    // Submit form again if language is changed and result is already displayed
-    if(form instanceof HTMLFormElement && result instanceof HTMLOutputElement && result.textContent?.trim())
-        form.requestSubmit();
-
+    renderResult();
     document.documentElement.lang = language;
+}
+
+/* ------------------------------------------------ */
+/*                Render Result                     */
+/* ------------------------------------------------ */
+function renderResult(): void
+{
+    if(!lastCalculation)
+        return;
+
+    const destination = celestialObjects.find((object) => object.id === lastCalculation.destinationId);
+    const unit = measuringUnits.find((item) => item.id === lastCalculation.unitId);
+    const result = document.getElementById("result");
+
+    if (!destination || !unit || !(result instanceof HTMLOutputElement))
+        return;
+
+    const amount = calculateDistance(destination.distanceFromEarthKm, unit.lengthMeters);
+    const formattedAmount = amount.toLocaleString(currentLanguage === "de" ? "de-AT" : "en-US", {maximumFractionDigits: 2});
+    const prefix = document.createElement("span");
+    prefix.textContent = `${currentTranslations["resultPrefix"]}${destination[currentLanguage]}: `;
+    const value = document.createElement("span");
+    value.className = "result-value";
+    value.textContent = `${formattedAmount} ${unit[currentLanguage]}`;
+    const suffix = document.createElement("span");
+    suffix.textContent = `${currentTranslations["resultSuffix"]}`;
+
+    result.replaceChildren(prefix, value, suffix);
 }
 
 /* ------------------------------------------------ */
@@ -232,22 +257,8 @@ async function initializeCalculator(): Promise<void>
             result.textContent = "Please select a destination and a unit.";
             return;
         }
-
-        // Calculate distance and format the result
-        const amount = calculateDistance(destination.distanceFromEarthKm, unit.lengthMeters);
-        const formattedAmount = amount.toLocaleString("en-US", {maximumFractionDigits: 2});
-
-        // Display the result in a beautiful way
-        const prefix = document.createElement("span");
-        prefix.textContent = `${currentTranslations["resultPrefix"]}${destination[currentLanguage]}: `;
-        const value = document.createElement("span");
-        value.className = "result-value";
-        value.textContent = `${formattedAmount} ${unit[currentLanguage]}`;
-        const suffix = document.createElement("span");
-        suffix.textContent = `${currentTranslations["resultSuffix"]}`;
-
-        // Clear previous result and append new result
-        result.replaceChildren(prefix, value, suffix);
+        lastCalculation = { destinationId: destination.id, unitId: unit.id };
+        renderResult();
     });
 }
 
@@ -271,6 +282,9 @@ languageToggle?.addEventListener("click", async (): Promise<void> =>
     languageToggle.textContent = currentLanguage === "de" ? "EN" : "DE";
 });
 let currentTranslations: Record<string, string> = {};
+// Global variable to hold the last calculation
+let lastCalculation: { destinationId: string; unitId: string};
+
 // Call the initializeCalculator function and handle any errors
 initializeCalculator().catch(console.error);
 // Call the initializeAbout function
