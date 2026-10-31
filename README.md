@@ -1,8 +1,16 @@
-Distances in Space
+**Distances in Space**
 
 An interactive website that explores astronomical distances using unusual measuring units, such as bricks, bathtubs, and schnitzels.
 
-Development Log
+**Installation Guide**
+
+git clone https://github.com/KaCeyJay/Distances-in-Space.git
+cd Distances-in-Space
+npm ci
+npm run build
+npm run preview
+
+**Development Log**
 
 1. Semantic HTML Structure
 --------------------------
