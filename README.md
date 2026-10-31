@@ -73,3 +73,7 @@ Added localised separators in the result
 14. Optimization
 --------------------------
 Replaced the ridiculous large images with smaller ones (Project size: 5.213kb --> 374kb)
+
+15. Reflexion.pdf
+--------------------------
+Added the reflexion.pdf (293 words)
